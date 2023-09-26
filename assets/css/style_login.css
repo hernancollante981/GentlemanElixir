@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000e0;
+}
+header {
+  height: 60px;
+  background-color: black;
+}
+/*logo del navbar*/
+.logo {
+  width: 100px;
+  height: 50px;
+}
+
+/* Estilos del formulario de inicio de sesión */
+.login {
+  text-align: center;
+  margin: 50px auto;
+  width: 300px;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.login h3 {
+  font-size: 24px;
+  color: gold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.login__control {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #cccccc4b;
+  border-radius: 3px;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2074a0;
+}
+
+p {
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #2074a0;
+}
+
+/*Sección del footer o pie de pagina*/
+#footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 5px;
+  margin-top: 5px;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.footer__list a {
+  color: white;
+}
+.footer__list :hover {
+  color: #0093e9;
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
+
+#footer img {
+  width: 120px;
+  padding: 10px;
+  margin: 5px;
+}
+#footer p {
+  height: 40px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

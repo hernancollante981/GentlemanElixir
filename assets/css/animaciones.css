@@ -1,0 +1,33 @@
+/*Agregamos scroll behavior smooth para que sea mas suave la navegación;*/
+/*scroll padding top para que se tenga en cuenta la altura del navbar 
+y no nos tape la sección*/
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+/*para el efecto glassmorphismo cuando abrimos el menú hamburguesa o
+ el carrito de compras*/
+.overlay {
+  /*le damos un ancho del 100%*/
+  width: 100%;
+  /*viewport height es cuando damos una altura del 100% de la ventana del navegador*/
+  height: 100vh;
+  /*se desplazara hacia abajo 65px desde la ventana del navegador */
+  top: 65px;
+  position: absolute;
+  /*para que quede arriba del resto de las cosas */
+  z-index: 1;
+
+  /* Glassmorphismo*/
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: none;
+}
+
+.show__overlay {
+  display: block;
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gentleman Elixir - Fragancias masculinas y elegantes.</title>
+
+    <!-- linkeamos el style css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/mediaqueries.css" />
+    <link rel="stylesheet" href="./assets/css/animaciones.css" />
+    <!--linkeamos font-awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- linkeamos el Favicon -->
+    <link
+      rel="icon"
+      href="./assets/img/Gentleman (2).png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body class="body">
+    <header class="header">
+      <!-- Agregamos el menu hamburguesa -->
+      <div class="menu__label">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <!--  el logo de nuestra empresa   -->
+      <img
+        src="./assets/img/navbar__logo 2.png"
+        class="logo"
+        alt="logo Gentleman Elixir"
+      />
+      <div class="header__log">
+        <button class="btn__login">
+          <a href="./Pages/login.html">Login</a>
+        </button>
+        <button class="btn__register">
+          <a href="./Pages/registro.html">Register</a>
+        </button>
+      </div>
+
+      <nav class="navbar">
+        <!--menu de navegación -->
+        <ul class="navbar__list">
+          <li><a class="navbar__link" href="#hero">Inicio</a></li>
+          <li><a class="navbar__link" href="#about-us">About-us</a></li>
+          <li><a class="navbar__link" href="#products">Fragancias</a></li>
+          <li><a class="navbar__link" href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!--Icono del carrito de compras -->
+      <div class="cart__label">
+        <i class="fa-solid fa-cart-shopping"
+          ><div class="cart__bubble">0</div>
+        </i>
+      </div>
+      <!--cart -->
+      <div class="cart">
+        <h2>Tus Fragancias</h2>
+
+        <div class="cart__container"></div>
+
+        <span class="divider"></span>
+
+        <div class="cart__total">
+          <p>Total :</p>
+          <span class="total"></span>
+        </div>
+        <div class="cart__btn">
+          <button class="cart__buy">Comprar</button>
+          <button class="cart__delete">Vaciar</button>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </header>
+    <main class="main">
+      <section id="hero">
+        <div class="hero__info">
+          <h1 class="hero__title">Gentleman Elixir</h1>
+          <img
+            src="./assets/img/bad-boy-carolina-herrera-portada.png"
+            alt="imagen de portada "
+            class="hero__img"
+          />
+        </div>
+        <div class="browser__box">
+          <input
+            type="text"
+            class="browser__text"
+            placeholder=" Busca tu fragancia favorita"
+          />
+          <button class="btn__browser">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </section>
+      <section id="about-us">
+        <h2>Descubre la Elegancia</h2>
+        <p>
+          <span class="span__about">Gentleman Elixir</span> es una marca
+          inspirada en la búsqueda constante de elegancia y confianza. Surgida
+          de la superación personal, representa la esencia de caballeros que
+          jamás desisten de sus sueños. Nuestros perfumes no solo elevan el
+          espíritu, sino que también te recuerdan que siempre puedes alcanzar la
+          grandeza."
+        </p>
+        <div class="about__cards">
+          <div class="about__benefit">
+            <h3 class="about__card--title">Envío a domicilio</h3>
+            <img
+              src="./assets/img/icons/DHL_Shipping_512x512_30129.png"
+              alt="imagen paquete de envios"
+              class="about__img"
+            />
+            <p class="about__card--p">
+              Ofrecemos envío a domicilio rápido y seguro, asegurándonos de que
+              tus fragancias lleguen directamente a tu puerta
+            </p>
+          </div>
+          <div class="about__benefit">
+            <h3 class="about__card--title">Medios de pago</h3>
+            <img
+              src="./assets/img/icons/wallet_22106.png"
+              alt="imagen de billetera"
+              class="about__img"
+            />
+            <p class="about__card--p">
+              te ofrecemos una amplia variedad de opciones de pago, desde
+              tarjetas de crédito y débito hasta servicios de pago en línea.
+            </p>
+          </div>
+          <div class="about__benefit">
+            <h3 class="about__card--title">Compra segura</h3>
+            <img
+              src="./assets/img/icons/shopping_bag_22119.png"
+              alt="imagen bolsa de compras"
+              class="about__img"
+            />
+            <p class="about__card--p">
+              Tu seguridad es nuestra prioridad. Con nuestro sistema de compra
+              segura, tus datos personales y financieros están protegidos.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="products">
+        <h2>Fragancias</h2>
+        <p class="product__p">
+          te ofrecemos una cuidadosa selección de las mejores fragancias que te
+          transportarán a un mundo de aromas exquisitos y exclusivos.
+        </p>
+
+        <div class="categories">
+          <button class="category active">Todas💎</button>
+          <button class="category" data-category="frescas">Frescas🌊</button>
+          <button class="category" data-category="orientales">
+            Orientales🛕
+          </button>
+          <button class="category" data-category="amaderadas">
+            Amaderadas🌳
+          </button>
+        </div>
+
+        <div class="perfumes">
+          <!-- Contenedor de las cards -->
+        </div>
+        <button class="btn__load">Ver Más</button>
+      </section>
+
+      <section id="contact">
+        <!-- Sección del Contacto -->
+        <h1>Contactanos</h1>
+        <div class="contact__info">
+          <div class="contact__info--all">
+            <div class="contact__info--list">
+              <div class="contact__redes">
+                <h2>Nuestras Redes</h2>
+                <ul>
+                  <li class="link__redes">
+                    <a href="#"
+                      ><img
+                        src="./assets/img/icons/facebook_icon-icons.com_53612.png"
+                        alt="logo de facebook"
+                      />Gentleman Elixir</a
+                    >
+                  </li>
+                  <li class="link__redes">
+                    <a href="https://wa.me/5493516827859" target="_blank"
+                      ><img
+                        src="./assets/img/icons/whatsapp_socialnetwork_17360.png"
+                        alt="logo de whatsapp"
+                      />+54 3516827859</a
+                    >
+                  </li>
+                  <li class="link__redes">
+                    <a href="#"
+                      ><img
+                        src="./assets/img/icons/3721672-instagram_108066.png"
+                        alt="logo de instagram"
+                      />@Gelixir</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="contact__location">
+                <h2>Tienda fisica</h2>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-location-dot"></i>Padre Claret
+                      4561, Los Boulevares-Córdoba
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-location-dot"></i>Tomas de Irobi
+                      223, El Marquez - Córdoba</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="contact__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27251.10546361274!2d-64.20655113171392!3d-31.375858354640208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985f478f5b69%3A0xb0a24f9a5366b092!2zQ8OzcmRvYmE!5e0!3m2!1ses!2sar!4v1694792980797!5m2!1ses!2sar"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <form id="form">
+            <div class="form__container">
+              <div class="form__data">
+                <div class="form__field">
+                  <input
+                    type="text"
+                    class="text__input"
+                    placeholder="Ingrese su Nombre"
+                    id="name__input"
+                  />
+                </div>
+                <div class="form__field">
+                  <input
+                    type="text"
+                    class="text__input"
+                    placeholder="Ingrese su Apellido"
+                    id="lastName__input"
+                  />
+                </div>
+                <div class="form__field">
+                  <input
+                    type="text"
+                    class="text__input"
+                    placeholder="Ingrese su Email"
+                    id="emai__input"
+                  />
+                </div>
+              </div>
+              <div class="form__field">
+                <textarea
+                  name="text"
+                  class="textarea__input"
+                  id="textarea"
+                  cols="30"
+                  rows="8"
+                  placeholder="escriba su consulta"
+                ></textarea>
+              </div>
+            </div>
+            <button class="form__btn">Enviar Consulta</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <!--Pie de pagina  -->
+
+      <ul class="footer__list">
+        <li>
+          <a href="./index.html">Privacidad</a>
+        </li>
+
+        <li>
+          <a href="./index.html">Terminos de uso</a>
+        </li>
+
+        <li>
+          <a href="./index.html">Contactanos</a>
+        </li>
+      </ul>
+
+      <img src="./assets/img/navbar__logo.png" alt="Imagen del footer" />
+      <p>Gentleman Elixir © Hernán Collante</p>
+    </footer>
+    <div class="add__modal"></div>
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
