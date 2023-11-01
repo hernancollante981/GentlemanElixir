@@ -53,23 +53,146 @@
     transition: all 0.2s ease-in-out;
     transform: scale(1.1);
   }
+  .form__container {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  #about-us {
+    max-width: 100%;
+  }
+  #about-us h2 {
+    max-width: 90%;
+    font-size: 24px;
+  }
 }
 
 @media (max-width: 576px) {
   .header__log {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
+    padding: 10px;
     top: 71px;
     left: 0px;
-    z-index: 999;
+    z-index: 1000;
     transform: translateX(-200%);
     transition: all 0.3s ease;
   }
   .open__log {
     transform: translateX(0%);
     transition: all 0.3s ease;
+  }
+  .hero__title {
+    font-size: 1.8rem;
+  }
+  .hero__img {
+    max-width: 90%;
+  }
+  #about-us h2 {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+  }
+  .perfumes {
+    max-width: 100%;
+  }
+  .product {
+    max-width: 100%;
+  }
+  .card__img {
+    max-width: 150px;
+  }
+  .card__box {
+    max-width: 100%;
+  }
+  .card__notas {
+    font-size: 9px;
+    width: 90%;
+  }
+  #contact {
+    width: 100%;
+  }
+  .contact__info--list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  .contact__redes {
+    max-width: 90%;
+  }
+  .contact__location {
+    max-width: 90%;
+  }
+  .contact__map iframe {
+    max-width: 100%;
+  }
+  #form {
+    width: 250px;
+    height: 400px;
+  }
+  .data__container {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .form__input {
+    max-width: 250px;
+  }
+
+  .footer__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .search__result {
+    display: flex;
+    justify-content: center;
+    max-width: 240px;
+  }
+  .perfumes {
+    max-width: 90%;
+  }
+  .product {
+    max-width: 100%;
+  }
+  .card__img {
+    max-width: 150px;
+  }
+  .card__box {
+    max-width: 90%;
+  }
+  .card__notas {
+    font-weight: bold;
+    font-weight: 300;
+    font-size: 7.5px;
+    width: 95%;
+  }
+  .form__container {
+    max-width: 250px;
+  }
+  .form__input {
+    max-width: 200px;
+  }
+  .footer__list a {
+    font-size: 10px;
+    color: gold;
+  }
+  p {
+    font-size: 15px;
   }
 }

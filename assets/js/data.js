@@ -202,7 +202,7 @@ const fragancias = [
     id: 22,
     marca: "Versace ",
     category: "orientales",
-    nombre: "Eros",
+    nombre: "Eros V",
     precio: 260,
     notas: ["Menta", "Limón", "Manzana Verde", "Ambroxan"],
     imagen: "assets/img/Fragancias/Eros_Versace-removebg-preview.png",

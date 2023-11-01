@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;1,300&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Roboto:ital,wght@0,300;1,300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid red;
+  font-family: "Playfair Display", serif;
+}
+body {
+  height: 100vh;
+  background-color: #000000e0;
+}
+.header {
+  top: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 65px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px 70px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  margin-top: 65px;
+}
+
+/*logo del navbar*/
+.logo {
+  max-width: 120px;
+  padding: 10px 10px;
+}
+.form__container {
+  max-width: 500px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.form__field {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  border: 1px solid blue;
+}
+.form__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.form__input {
+  margin: 5px 5px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  width: 350px;
+  color: #fff;
+  background-color: #484646;
+}
+.form__submit--btn {
+  padding: 8px 15px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #0093e9;
+}
+.form__redirect {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  padding: 10px 10px;
+  font-size: 18px;
+}
+a {
+  color: #0093e9;
+}
+
+/*Sección del footer o pie de pagina*/
+#footer {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 5px;
+  margin-top: 5px;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+.footer__list a {
+  color: white;
+}
+.footer__list :hover {
+  color: #0093e9;
+  transition: all 0.2s ease;
+  transform: scale(1.1);
+}
+
+#footer img {
+  width: 120px;
+  padding: 10px;
+  margin: 5px;
+}
+#footer p {
+  height: 40px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

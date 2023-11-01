@@ -7,6 +7,37 @@ html {
   scroll-padding-top: 70px;
 }
 
+@keyframes fadeleft {
+  0% {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes fadeTopBottom {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes faderigth {
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
 /*para el efecto glassmorphismo cuando abrimos el menú hamburguesa o
  el carrito de compras*/
 .overlay {

@@ -28,12 +28,21 @@ const productsCart = document.querySelector(".cart__container");
 const total = document.querySelector(".total");
 //capturamos el msj para el usuario
 const successModal = document.querySelector(".add__modal");
+//capturamos el mensaje de compra exitosa para el user
+const successfulPurchase = document.querySelector(".buy__modal");
 //capturamos el boton de compra
 const btnBuy = document.querySelector(".cart__buy");
 //capturamos el boton para vaciar el carrito
 const btnDelete = document.querySelector(".cart__delete");
 // capturamos la burbuja contadora
 const cartBubble = document.querySelector(".cart__bubble");
+// capturamos el buscador
+const searchInput = document.querySelector(".browser__text");
+//capturamos el boton del buscador
+const searchButton = document.querySelector(".btn__browser");
+//capturamos el contenedor para renderizar la fragancia buscada
+const searchResultContainer = document.querySelector(".search__result");
+
 //----------------------------------------------------------------
 
 //  creamos el template de las cards
@@ -110,7 +119,7 @@ const renderFilteredProducts = () => {
   renderProducts(filteredProducts);
 };
 
-// chequep si el botón que se apretó no es un botón de categoría o ya está activo, no hace nada
+// chequeo si el botón que se apretó no es un botón de categoría o ya está activo, no hace nada
 const isInactiveFilterBtn = (element) => {
   return (
     element.classList.contains("category") &&
@@ -153,9 +162,13 @@ const toggleCart = () => {
   // cuando el usuario haga click en el icono del carrito , se activa o desactiva el carrito de compras
   cartMenu.classList.toggle("open__cart");
   // en este paso verificamos  si el menu Hamburguesa esta desplegado
-  if (barsMenu.classList.contains("open__menu")) {
+  if (
+    barsMenu.classList.contains("open__menu") &&
+    headerLog.classList.contains("open__log")
+  ) {
     //si el menu Hamburguesa esta desplegado, lo cerramos eliminando la clase (open__menu)
     barsMenu.classList.remove("open__menu");
+    headerLog.classList.remove("open__log");
 
     return; //salimos de la función
   }
@@ -167,6 +180,7 @@ const toggleMenu = () => {
   //cuando el usuario hace click en el icono de menú(Hamburguesa) , se activa o desactiva el menu de la navegación
 
   barsMenu.classList.toggle("open__menu");
+  headerLog.classList.add("open__log");
 
   //verificamos si el carrito de compras esta desplegado
   if (cartMenu.classList.contains("open__cart")) {
@@ -186,18 +200,21 @@ const closeOnClickLink = (e) => {
   }
   //si estoy haciendo click efectivamente en el link los cierro
   barsMenu.classList.remove("open__menu");
-  overlay.classList.remove("show__");
+  headerLog.classList.remove("open__log");
+  overlay.classList.remove("show__overlay");
 };
 
 //funcion para cerrar el carrito o el menu hamburguesa y ocultar el overlay si el usuario hace scroll
 const closeOnScroll = () => {
   if (
     barsMenu.classList.contains("open__menu") &&
+    headerLog.classList.contains("open__log") &&
     cartMenu.classList.contains("open__cart")
   ) {
     return;
   }
   barsMenu.classList.remove("open__menu");
+  headerLog.classList.remove("open__log");
   cartMenu.classList.remove("open__cart");
   overlay.classList.remove("show__overlay");
 };
@@ -205,6 +222,7 @@ const closeOnScroll = () => {
 //funcion para cerrar el carrito o el menu hamburguesa si el usuario hace click en el overlay
 const closeOnOverlayClick = () => {
   barsMenu.classList.remove("open__menu");
+  headerLog.classList.remove("open__log");
   cartMenu.classList.remove("open__cart");
   overlay.classList.remove("show__overlay");
 };
@@ -242,7 +260,6 @@ const renderCart = () => {
 //creamos el molde de nuestro carrito de compras
 
 const createCartTemplate = (cartProducts) => {
-  console.log("queonda", cartProducts);
   const { id, imagen, nombre, precio, quantity } = cartProducts;
   return `<div class="cart__item">
   <img src="${imagen}" alt="${nombre}" />
@@ -255,6 +272,9 @@ const createCartTemplate = (cartProducts) => {
     <span class="item__quantity">${quantity}</span>
     <button class="quantity__handler down" data-id="${id}">-</button>
   </div>
+  <div class="item__delete">
+  <i class="fa-solid fa-trash-can" data-id="${id}"></i>
+ </div>
 </div>
 `;
 };
@@ -296,6 +316,10 @@ const addProduct = (e) => {
     showSuccessModal("El perfume se agrego al carrito");
   }
   updateCartState();
+
+  setTimeout(() => {
+    toggleCart();
+  }, 1500);
 };
 
 //función desestructuradora
@@ -323,10 +347,10 @@ const showSuccessModal = (msg) => {
   successModal.classList.add("active__modal");
   //su textcontent va a ser un msg dinamico que lo agregamos arriba
   successModal.textContent = msg;
-  // despues de un segundo y medio lo remuevo
+  // despues de tres segundos
   setTimeout(() => {
     successModal.classList.remove("active__modal");
-  }, 1000);
+  }, 3000);
 };
 
 //creamos un objeto con la información del producto que queremos agregar
@@ -335,15 +359,16 @@ const createCartProduct = (product) => {
   cart = [...cart, { ...product, quantity: 1 }];
 };
 
-const disableButtons = (btn) => {
+const disableButtons = () => {
   //si el carrito se encuentra vacio
   //añado la clase disabled
   if (!cart.length) {
-    btn.classList.add("disabled");
+    btnBuy.classList.add("disabled");
+    btnDelete.classList.add("disabled");
   } // de lo contrario si hay productos en mi carrito elimino el disabled
   else {
-    console.log("este es el error", disableButtons);
-    btn.classList.remove("disabled");
+    btnBuy.classList.remove("disabled");
+    btnDelete.classList.remove("disabled");
   }
 };
 
@@ -352,6 +377,99 @@ const renderCartBubble = () => {
     return acc + cur.quantity;
   }, 0);
 };
+
+const deleteUnitToProduct = (product) => {
+  cart = cart.map((cartProduct) => {
+    if (cartProduct.id === product.id) {
+      if (cartProduct.quantity === 1) {
+        let newCart = cart.filter(
+          (cartProduct) => cartProduct.id === product.id
+        );
+        cart = newCart;
+      }
+    }
+  });
+};
+
+const increaseCartState = (productId) => {
+  cart = cart.map((cartProduct) =>
+    cartProduct.id === productId
+      ? {
+          ...cartProduct,
+          quantity: cartProduct.quantity + 1,
+        }
+      : cartProduct
+  );
+  updateCartState(productId);
+};
+
+const decreaseCartState = (productId) => {
+  cart = cart.map((cartProduct) =>
+    cartProduct.id === productId
+      ? {
+          ...cartProduct,
+          quantity: Math.max(cartProduct.quantity - 1, 0),
+        }
+      : cartProduct
+  );
+  //elimino el producto si la cantidad llega a 0 o menos
+  cart = cart.filter((cartProduct) => cartProduct.quantity > 0);
+  //actualizo el estado de mi carrito
+  updateCartState(productId);
+};
+
+const removeCartProduct = (productId) => {
+  //
+  const productIndex = cart.findIndex((item) => item.id === productId);
+  if (productIndex !== -1) {
+    //elimina el producto del carrito segun su ID
+    cart.splice(productIndex, 1);
+    //Actualizamos el estado del carrito
+    updateCartState();
+  }
+};
+
+const buyCartProducts = () => {
+  //si cart en su longitud es 0
+  if (cart.length === 0) {
+    //retorno
+    return;
+  }
+  const buyConfirm = confirm("¿ Deseas confirmar la compra ?");
+  if (buyConfirm) {
+    cart = [];
+    showSuccessFulPurchase("Su compra fue exitosa");
+  }
+
+  updateCartState();
+};
+// creo la función para darle la devolución de compra exitosa al usuario
+const showSuccessFulPurchase = (msg) => {
+  //agrego el activ  modal
+  successfulPurchase.classList.add("activ__modal");
+  // el textcontent es un mensaje dinamico el cual voy a pasar  de arriba
+  successfulPurchase.textContent = msg;
+  //despues de aparecer el mensaje al usuario remuevo el activ modal
+  setTimeout(() => {
+    successfulPurchase.classList.remove("activ__modal");
+  }, 2000);
+};
+
+const deleteCartProducts = () => {
+  // si mi carrito en su longitud es igual a 0 retorno
+  if (cart.length === 0) {
+    return;
+  }
+  // creo una variable constante
+  const confirmacion = confirm("¿ Seguro quieres eliminar los productos ?");
+  if (confirmacion) {
+    // vacio la estructura de datos
+    cart = [];
+  }
+  // actualizo el estado de mi carrito
+  updateCartState();
+};
+
 const updateCartState = () => {
   cartSave();
   renderCart();
@@ -359,8 +477,39 @@ const updateCartState = () => {
   renderCartBubble();
 
   //aplicamos la clase disabled cuando no hay productos
-  disableButtons("cart__buy");
-  disableButtons("cart__delete");
+  disableButtons("btnBuy");
+  disableButtons("btnDelete");
+};
+
+//buscar y renderizar el producto solicitado por el usuario
+const searchAndRenderProduct = () => {
+  // capturo el valor del campo de busqueda
+  const searchTerm = searchInput.value.toLowerCase();
+  //limpiamos el contenedor de resultados anteriores
+
+  if (searchTerm.trim() === "") {
+    // Si está vacío, borra el contenido del contenedor de resultados de búsqueda
+    searchResultContainer.innerHTML = "";
+    return; //retornamos
+  }
+  const searchResult = fragancias.filter((fragancia) => {
+    return fragancia.nombre.toLowerCase().includes(searchTerm);
+  });
+
+  if (searchResult.length === 0) {
+    searchResultContainer.innerHTML = "<p>No se encontraron resultados.</p>";
+  } else {
+    // si se encuentran resultados renderizamos el producto
+    searchResult.forEach((fragancias) => {
+      const productTemplate = createProductsTemplate(fragancias);
+      searchResultContainer.innerHTML = productTemplate;
+    });
+  }
+};
+const clearSearchResult = (e) => {
+  if (e.target !== searchInput && e.target !== searchButton) {
+    searchInput.value = "";
+  }
 };
 
 //-----------------------------------------------------------------
@@ -379,9 +528,39 @@ const init = () => {
   document.addEventListener("DOMContentLoaded", showCartTotal);
   productsContainer.addEventListener("click", addProduct);
   renderCartBubble(cart);
+  disableButtons(btnBuy);
+  disableButtons(btnDelete);
+  btnDelete.addEventListener("click", deleteCartProducts);
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("fa-trash-can")) {
+      const productId = e.target.getAttribute("data-id");
+      removeCartProduct(productId);
+    }
+  });
+  btnBuy.addEventListener("click", buyCartProducts);
+  searchButton.addEventListener("click", searchAndRenderProduct);
+  searchResultContainer.addEventListener("click", addProduct);
+  document.addEventListener("click", clearSearchResult);
   document.addEventListener("DOMContentLoaded", () => {
-    disableButtons(btnBuy);
-    disableButtons(btnDelete);
+    document.addEventListener("click", (e) => {
+      if (
+        e.target.classList.contains("quantity__handler") &&
+        e.target.classList.contains("up")
+      ) {
+        const productId = e.target.dataset.id;
+        increaseCartState(productId);
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        e.target.classList.contains("quantity__handler") &&
+        e.target.classList.contains("down")
+      ) {
+        const productId = e.target.dataset.id;
+        decreaseCartState(productId);
+      }
+    });
   });
 };
 

@@ -77,6 +77,7 @@
           <button class="cart__delete">Vaciar</button>
         </div>
       </div>
+      <div class="buy__modal"></div>
       <div class="overlay"></div>
     </header>
     <main class="main">
@@ -84,7 +85,7 @@
         <div class="hero__info">
           <h1 class="hero__title">Gentleman Elixir</h1>
           <img
-            src="./assets/img/bad-boy-carolina-herrera-portada.png"
+            src="./assets/img/bad-boy-carolina-herrera-portada-removebg-preview.png"
             alt="imagen de portada "
             class="hero__img"
           />
@@ -93,12 +94,14 @@
           <input
             type="text"
             class="browser__text"
-            placeholder=" Busca tu fragancia favorita"
+            placeholder=" Busca tu fragancia"
           />
           <button class="btn__browser">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
+
+        <div class="search__result"></div>
       </section>
       <section id="about-us">
         <h2>Descubre la Elegancia</h2>
@@ -112,7 +115,7 @@
         </p>
         <div class="about__cards">
           <div class="about__benefit">
-            <h3 class="about__card--title">Envío a domicilio</h3>
+            <h3 class="about__card--title">Envíos</h3>
             <img
               src="./assets/img/icons/DHL_Shipping_512x512_30129.png"
               alt="imagen paquete de envios"
@@ -239,8 +242,8 @@
             </div>
           </div>
 
-          <form id="form">
-            <div class="form__container">
+          <form class="form__container" id="form">
+            <div class="data__container">
               <div class="form__data">
                 <div class="form__field">
                   <input

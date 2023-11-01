@@ -4,44 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
-    <link rel="stylesheet" href="../assets/css/style_registro.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/form.css" />
+    <link rel="stylesheet" href="../assets/css/mediaqueries.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <a href="../index.html">
         <img src="../assets/img//navbar__logo 2.png" class="logo" alt="logo" />
       </a>
     </header>
-    <section class="registro">
-      <h3>Registrarse</h3>
-      <form id="form__register">
-        <input
-          class="register__control"
-          type="text"
-          id="user"
-          placeholder="usuario"
-        />
+    <main class="main">
+      <h3 class="form__title">Registrarse</h3>
+      <form class="form__container" id="register__form" novalidate>
+        <!--Nombre -->
+        <div class="form__field">
+          <input
+            type="text"
+            id="name"
+            class="form__input"
+            placeholder="Nombre"
+            autocomplete="off"
+          />
+        </div>
+        <!--Apellido -->
+        <div class="form__field">
+          <input
+            type="text"
+            id="lastname"
+            class="form__input"
+            placeholder="Apellido"
+            autocomplete="off"
+          />
+        </div>
+        <!--Correo Electrónico -->
+        <div class="form__field">
+          <input
+            type="email"
+            id="email"
+            class="form__input"
+            placeholder="Email"
+            autocomplete="off"
+          />
+        </div>
+        <!--Contraseña -->
+        <div class="form__field">
+          <input
+            type="password"
+            id="password"
+            class="form__input"
+            placeholder="Contraseña"
+            autocomplete="off"
+          />
+        </div>
 
-        <input
-          class="register__control"
-          type="text"
-          id="email"
-          placeholder="Escriba su email"
-        />
-
-        <input
-          class="register__control"
-          type="password"
-          id="pass"
-          placeholder="Ecriba su contraseña"
-        />
-
-        <button>Registrarme</button>
-        <p>
-          <a href="./login.html">¿Ya tengo cuenta?</a>
+        <input type="submit" class="form__submit--btn" value="Registrarse" />
+        <p class="form__redirect">
+          ¿Ya tenés cuenta?<a href="./login.html">Iniciá Sesión</a>
         </p>
       </form>
-    </section>
+    </main>
     <footer id="footer">
       <!--Pie de pagina  -->
 
@@ -62,5 +84,6 @@
       <img src="../assets/img/navbar__logo.png" alt="Imagen del footer" />
       <p>Gentleman Elixir © Hernán Collante</p>
     </footer>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>
